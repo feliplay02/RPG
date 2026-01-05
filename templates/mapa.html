@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+
+<table>
+    {% for fila in mapa %}
+    <tr>
+        {% for celda in fila %}
+        <td class="{% if celda=='#' %}pared{% elif celda=='.' %}suelo{% elif celda=='P' %}jugador{% endif %}"></td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+    document.addEventListener('keydown', (event) => {
+        let dir = null;
+        if (event.key.toLowerCase() === 'w' || event.key === "ArrowUp") dir='w';
+        if (event.key.toLowerCase() === 'a' || event.key === "ArrowLeft") dir='a';
+        if (event.key.toLowerCase() === 's' || event.key === "ArrowDown") dir='s';
+        if (event.key.toLowerCase() === 'd' || event.key === "ArrowRight") dir='d';
+        if(dir) window.location.href = '/mover/' + dir;
+    });
+</script>
+
+</body>
+</html>

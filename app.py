@@ -8,7 +8,7 @@ app = Flask(__name__)
 width, height = 10, 10
 jugador = [int(width/2), int(height/2)]
 dungeon_map = build_dungeon_map(width, height, jugador)
-  
+
 
 # Función para mover al jugador según dirección
 def mover(direccion):
